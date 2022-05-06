@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
+        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/drawable/border_divide.xml" value="0.1" />
+        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/drawable/border_main.xml" value="0.1" />
         <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
-        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/layout/activity_first_board.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/layout/activity_first_board.xml" value="0.17" />
+        <entry key="..\:/Users/Cho_sg/AndroidStudioProjects/my_app_project/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>
