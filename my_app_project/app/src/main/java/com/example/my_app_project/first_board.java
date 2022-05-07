@@ -1,5 +1,6 @@
 package com.example.my_app_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,15 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class first_board extends AppCompatActivity {
     private TextView tv_result;
     private ImageView iv_profile;
-    Button btnLogout;
     private FirebaseAuth mAuth;
-    GoogleSignInClient mGoogleSignClient;
+    private GoogleApiClient mActivity;
+    private boolean isLoggingOut = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +36,35 @@ public class first_board extends AppCompatActivity {
 
         tv_result = findViewById(R.id.textView);
         tv_result.setText(nickName);
-        btnLogout = (Button) findViewById(R.id.btn_logout);
         mAuth = FirebaseAuth.getInstance();
 
         iv_profile = findViewById(R.id.iv_profile);
         Glide.with(this).load(photoUrl).into(iv_profile);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-                finishAffinity();
-            }
-        });
+        findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
+        findViewById(R.id.button7).setOnClickListener(onClickListener);
     }
-
     private void signOut() {
-        mGoogleSignClient.signOut()
-                .addOnCompleteListener(this, task -> {
-                    mGoogleSignClient.revokeAccess()
-                            .addOnCompleteListener(this, task1 -> Log.d("first_board", "onClick:revokeAccess success "));
-
-                });
+        if (mActivity.isConnected()) {
+            // Google sign out
+            Auth.GoogleSignInApi.signOut(mActivity);
+        }
     }
+
+
+    View.OnClickListener onClickListener = (v) -> {
+        switch(v.getId()){
+            case R.id.btn_logout:
+                signOut();
+                break;
+            case R.id.button7:
+                myStartActivity(WriteQuestion.class);
+                break;
+        }
+    };
+
+   private void myStartActivity(Class c){
+       Intent intent = new Intent(this,c);
+       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+       startActivity(intent);
+   }
 }
