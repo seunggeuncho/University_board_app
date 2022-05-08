@@ -85,12 +85,13 @@
             android:background="@drawable/border_main"
             android:orientation="vertical" />
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border_main"
-            android:orientation="vertical"></LinearLayout>
+            android:background="@drawable/border_main" />
+
     </LinearLayout>
 
     <LinearLayout

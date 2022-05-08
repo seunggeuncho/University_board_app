@@ -3,6 +3,7 @@ package com.example.my_app_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Date;
 
 public class WriteQuestion extends AppCompatActivity {
     private static final String TAG = "WriteQuestion";
@@ -33,6 +36,7 @@ public class WriteQuestion extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.check:
                     profileUpdate();
+                    backActivity();
                     break;
             }
         }
@@ -43,7 +47,7 @@ public class WriteQuestion extends AppCompatActivity {
 
         if (title.length() > 0 && contents.length() > 0) {
             user = FirebaseAuth.getInstance().getCurrentUser();
-            WriteInfo writeinfo = new WriteInfo(title, contents, user.getDisplayName());
+            WriteInfo writeinfo = new WriteInfo(title, contents, user.getUid(), new Date());
             uploader(writeinfo);
         } else {
             startToast("내용을 입력해주세요");
@@ -70,6 +74,10 @@ public class WriteQuestion extends AppCompatActivity {
 
     private void startToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+    private void backActivity(){
+        Intent intent = new Intent(this,first_board.class);
+        startActivity(intent);
     }
 
 }
