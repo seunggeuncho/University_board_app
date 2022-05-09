@@ -9,14 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.my_app_project.adapter.QuestionAdapter;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,7 +50,7 @@ public class first_board extends AppCompatActivity {
 
         iv_profile = findViewById(R.id.iv_profile);
         Glide.with(this).load(photoUrl).into(iv_profile);
-        findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_back).setOnClickListener(onClickListener);
         findViewById(R.id.button7).setOnClickListener(onClickListener);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -98,7 +96,7 @@ public class first_board extends AppCompatActivity {
 
     View.OnClickListener onClickListener = (v) -> {
         switch(v.getId()){
-            case R.id.btn_logout:
+            case R.id.btn_back:
                 signOut();
                 break;
             case R.id.button7:

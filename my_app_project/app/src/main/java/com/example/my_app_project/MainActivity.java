@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     public void onComplete(@NonNull Task<AuthResult> task) {
                      if(task.isSuccessful()){
                          Toast.makeText(MainActivity.this, "로그인 성공", Toast.LENGTH_LONG).show();
-                         Intent intent = new Intent(getApplicationContext(), first_board.class);
+                         Intent intent = new Intent(getApplicationContext(), choose.class);
                          intent.putExtra("nickName", account.getDisplayName());
                          intent.putExtra("photoUrl", String.valueOf(account.getPhotoUrl()));
 

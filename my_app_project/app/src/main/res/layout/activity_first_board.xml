@@ -151,12 +151,14 @@
             android:background="#771717" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_logout"
+            android:id="@+id/btn_back"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#EA420D"
-            android:text="Logout" />
+            android:text="뒤로가기"
+            android:textColor="#ECE4E4"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
