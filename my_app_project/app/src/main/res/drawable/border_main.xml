@@ -7,8 +7,8 @@
         android:top="1dp">
         <shape android:shape="rectangle">
             <stroke
-                android:width="6dip"
-                android:color="#D6BA63"/>
+                android:width="3dip"
+                android:color="#771717"/>
             <solid android:color="#FFFFFF" />
         </shape>
     </item>

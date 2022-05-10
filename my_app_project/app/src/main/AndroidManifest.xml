@@ -16,7 +16,7 @@
             android:name=".WriteQuestion"
             android:exported="false" />
         <activity
-            android:name=".first_board"
+            android:name=".Question_board"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

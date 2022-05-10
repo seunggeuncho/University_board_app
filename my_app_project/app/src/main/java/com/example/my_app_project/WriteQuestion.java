@@ -24,16 +24,20 @@ public class WriteQuestion extends AppCompatActivity {
     private FirebaseUser user;
     String nickName;
     String photoUrl;
+    Integer check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_question);
-        findViewById(R.id.check).setOnClickListener(onClickListener);
 
+        findViewById(R.id.check).setOnClickListener(onClickListener);
+        findViewById(R.id.back_btn).setOnClickListener(onClickListener);
+        check = 0;
         Intent intent = getIntent();
         nickName = intent.getStringExtra("nickName");
         photoUrl = intent.getStringExtra("photoUrl");
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -42,8 +46,12 @@ public class WriteQuestion extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.check:
                     profileUpdate();
-                    backActivity();
+                    if (check == 1) {
+                        backActivity();
+                    }
                     break;
+                case R.id.back_btn:
+                    backActivity();
             }
         }
     };
@@ -54,6 +62,7 @@ public class WriteQuestion extends AppCompatActivity {
         if (title.length() > 0 && contents.length() > 0) {
             user = FirebaseAuth.getInstance().getCurrentUser();
             WriteInfo writeinfo = new WriteInfo(title, contents, user.getUid(), new Date());
+            check = 1;
             uploader(writeinfo);
         } else {
             startToast("내용을 입력해주세요");
@@ -82,7 +91,7 @@ public class WriteQuestion extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
     private void backActivity(){
-        Intent intent = new Intent(this,first_board.class);
+        Intent intent = new Intent(this,Question_board.class);
         intent.putExtra("nickName", nickName);
         intent.putExtra("photoUrl", photoUrl);
         startActivity(intent);

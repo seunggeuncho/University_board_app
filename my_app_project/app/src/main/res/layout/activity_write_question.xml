@@ -35,5 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="확인" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="뒤로가기" />
     </LinearLayout>
 </ScrollView>

@@ -54,7 +54,7 @@ public class choose extends AppCompatActivity {
                     signOut();
                     break;
                 case R.id.question_btn:
-                    myStartActivity(first_board.class);
+                    myStartActivity(Question_board.class);
                     break;
             }
         };

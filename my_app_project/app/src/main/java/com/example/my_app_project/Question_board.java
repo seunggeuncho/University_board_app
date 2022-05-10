@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.my_app_project.adapter.QuestionAdapter;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class first_board extends AppCompatActivity {
+public class Question_board extends AppCompatActivity {
     private static final String TAG = "first_board";
     private TextView tv_result;
     private ImageView iv_profile;
@@ -76,9 +75,9 @@ public class first_board extends AppCompatActivity {
                             }
                             RecyclerView recyclerView = findViewById(R.id.recycleView);
                             recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(first_board.this));
+                            recyclerView.setLayoutManager(new LinearLayoutManager(Question_board.this));
 
-                            RecyclerView.Adapter mAdapter = new QuestionAdapter(first_board.this,writeInfo);
+                            RecyclerView.Adapter mAdapter = new QuestionAdapter(Question_board.this,writeInfo);
                             recyclerView.setAdapter(mAdapter);
                         }else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
