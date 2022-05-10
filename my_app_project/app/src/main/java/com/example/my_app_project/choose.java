@@ -16,6 +16,8 @@ public class choose extends AppCompatActivity {
     private TextView tv_result;
     private ImageView iv_profile;
     private GoogleApiClient mActivity;
+    String nickName;
+    String photoUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,8 @@ public class choose extends AppCompatActivity {
         setContentView(R.layout.activity_choose);
 
         Intent intent = getIntent();
-        String nickName = intent.getStringExtra("nickName");
-        String photoUrl = intent.getStringExtra("photoUrl");
+        nickName = intent.getStringExtra("nickName");
+        photoUrl = intent.getStringExtra("photoUrl");
 
         tv_result = findViewById(R.id.textView);
         tv_result.setText(nickName);
@@ -59,6 +61,8 @@ public class choose extends AppCompatActivity {
 
         private void myStartActivity (Class c){
             Intent intent = new Intent(this, c);
+            intent.putExtra("nickName", nickName);
+            intent.putExtra("photoUrl", photoUrl);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }

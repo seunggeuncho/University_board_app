@@ -34,6 +34,8 @@ public class first_board extends AppCompatActivity {
     private GoogleApiClient mActivity;
     private boolean isLoggingOut = false;
     FirebaseFirestore db;
+    String nickName;
+    String photoUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +43,8 @@ public class first_board extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String nickName = intent.getStringExtra("nickName");
-        String photoUrl = intent.getStringExtra("photoUrl");
+        nickName = intent.getStringExtra("nickName");
+        photoUrl = intent.getStringExtra("photoUrl");
 
         tv_result = findViewById(R.id.textView);
         tv_result.setText(nickName);
@@ -51,7 +53,7 @@ public class first_board extends AppCompatActivity {
         iv_profile = findViewById(R.id.iv_profile);
         Glide.with(this).load(photoUrl).into(iv_profile);
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
-        findViewById(R.id.button7).setOnClickListener(onClickListener);
+        findViewById(R.id.floatingActionButton2).setOnClickListener(onClickListener);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -86,20 +88,13 @@ public class first_board extends AppCompatActivity {
 
 
     }
-    private void signOut() {
-        if (mActivity.isConnected()) {
-            // Google sign out
-            Auth.GoogleSignInApi.signOut(mActivity);
-        }
-    }
-
 
     View.OnClickListener onClickListener = (v) -> {
         switch(v.getId()){
             case R.id.btn_back:
-                signOut();
+                myStartActivity(choose.class);
                 break;
-            case R.id.button7:
+            case R.id.floatingActionButton2:
                 myStartActivity(WriteQuestion.class);
                 break;
         }
@@ -107,6 +102,8 @@ public class first_board extends AppCompatActivity {
 
    private void myStartActivity(Class c){
        Intent intent = new Intent(this,c);
+       intent.putExtra("nickName", nickName);
+       intent.putExtra("photoUrl", photoUrl);
        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
        startActivity(intent);
    }

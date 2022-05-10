@@ -22,12 +22,18 @@ import java.util.Date;
 public class WriteQuestion extends AppCompatActivity {
     private static final String TAG = "WriteQuestion";
     private FirebaseUser user;
+    String nickName;
+    String photoUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_question);
         findViewById(R.id.check).setOnClickListener(onClickListener);
+
+        Intent intent = getIntent();
+        nickName = intent.getStringExtra("nickName");
+        photoUrl = intent.getStringExtra("photoUrl");
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -77,6 +83,8 @@ public class WriteQuestion extends AppCompatActivity {
     }
     private void backActivity(){
         Intent intent = new Intent(this,first_board.class);
+        intent.putExtra("nickName", nickName);
+        intent.putExtra("photoUrl", photoUrl);
         startActivity(intent);
     }
 
