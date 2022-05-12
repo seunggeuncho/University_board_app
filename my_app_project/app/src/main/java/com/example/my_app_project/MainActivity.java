@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             startActivity(intent);
             finish();
         }*/
-        Log.v("Current User--------------",String.valueOf(auth.getCurrentUser()));
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
                 .requestEmail()
@@ -79,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){
                 GoogleSignInAccount account = result.getSignInAccount();
-                Log.v("accountId",account.getId());
                 resultLogin(account);
             }
         }
