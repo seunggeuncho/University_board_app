@@ -39,13 +39,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-       /*if (auth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplication(), choose.class);
-            intent.putExtra("nickName", String.valueOf(auth.getCurrentUser().getDisplayName()));
-            intent.putExtra("photoUrl", String.valueOf(auth.getCurrentUser().getPhotoUrl()));
-            startActivity(intent);
-            finish();
-        }*/
+       
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
                 .requestEmail()
