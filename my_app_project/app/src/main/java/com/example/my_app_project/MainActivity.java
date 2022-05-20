@@ -1,14 +1,14 @@
 package com.example.my_app_project;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             intent.putExtra("nickName", String.valueOf(auth.getCurrentUser().getDisplayName()));
             intent.putExtra("photoUrl", String.valueOf(auth.getCurrentUser().getPhotoUrl()));
             startActivity(intent);
-            finish();///////
+            finish();
         }*/
+        Log.v("Current User--------------",String.valueOf(auth.getCurrentUser()));
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
                 .requestEmail()
