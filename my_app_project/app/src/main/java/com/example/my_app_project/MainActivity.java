@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             intent.putExtra("nickName", String.valueOf(auth.getCurrentUser().getDisplayName()));
             intent.putExtra("photoUrl", String.valueOf(auth.getCurrentUser().getPhotoUrl()));
             startActivity(intent);
-            finish();
+            finish();///////////
         }*/
         Log.v("Current User--------------",String.valueOf(auth.getCurrentUser()));
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
