@@ -1,20 +1,16 @@
 package com.example.my_app_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.io.File;
 
 public class choose extends AppCompatActivity {
     private TextView tv_result;
@@ -33,7 +29,7 @@ public class choose extends AppCompatActivity {
         nickName = intent.getStringExtra("nickName");
         photoUrl = intent.getStringExtra("photoUrl");
 
-        tv_result = findViewById(R.id.textView);
+        tv_result = findViewById(R.id.titleTextView);
         tv_result.setText(nickName);
         mAuth = FirebaseAuth.getInstance();
 

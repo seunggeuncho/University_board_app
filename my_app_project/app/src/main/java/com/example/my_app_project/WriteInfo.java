@@ -7,12 +7,21 @@ public class WriteInfo {
     private String contents;
     private String publisher;
     private Date createdAt;
+    private String id;
 
+    public WriteInfo(String title, String contents, String publisher, Date createdAt, String id){
+        this.title = title;
+        this.contents = contents;
+        this.publisher = publisher;
+        this.createdAt = createdAt;
+        this.id = id;
+    }
     public WriteInfo(String title, String contents, String publisher, Date createdAt){
         this.title = title;
         this.contents = contents;
         this.publisher = publisher;
         this.createdAt = createdAt;
+        this.id = id;
     }
 
     public String getTitle() {return this.title;}
@@ -23,4 +32,6 @@ public class WriteInfo {
     public void setPublisher(String publisher) {this.publisher = publisher;}
     public Date getCreatedAt() {return this.createdAt;}
     public void setCreatedAt(Date createdAt) {this.createdAt = createdAt;}
+    public String getId() {return this.id;}
+    public void setId(String id) {this.id = id;}
 }

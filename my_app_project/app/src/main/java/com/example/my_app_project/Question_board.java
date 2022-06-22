@@ -1,10 +1,5 @@
 package com.example.my_app_project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,18 +7,27 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.example.my_app_project.adapter.QuestionAdapter;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import listener.OnPostListener;
 
 public class Question_board extends AppCompatActivity {
     private static final String TAG = "first_board";
@@ -32,7 +36,10 @@ public class Question_board extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private GoogleApiClient mActivity;
     private boolean isLoggingOut = false;
-    FirebaseFirestore db;
+    private FirebaseUser firebaseUser;
+    private FirebaseFirestore db;
+
+    private QuestionAdapter questionAdapter;
     String nickName;
     String photoUrl;
     @Override
@@ -45,9 +52,10 @@ public class Question_board extends AppCompatActivity {
         nickName = intent.getStringExtra("nickName");
         photoUrl = intent.getStringExtra("photoUrl");
 
-        tv_result = findViewById(R.id.textView);
+        tv_result = findViewById(R.id.titleTextView);
         tv_result.setText(nickName);
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         iv_profile = findViewById(R.id.iv_profile);
         Glide.with(this).load(photoUrl).into(iv_profile);
@@ -58,7 +66,19 @@ public class Question_board extends AppCompatActivity {
 
 
 
-        db.collection("posts")
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+
+
+        db.collection("posts").orderBy("createdAt", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -71,7 +91,8 @@ public class Question_board extends AppCompatActivity {
                                         document.getData().get("title").toString(),
                                         (String) document.getData().get("contents"),
                                         document.getData().get("publisher").toString(),
-                                        new Date(document.getDate("createdAt").getTime())));
+                                        new Date(document.getDate("createdAt").getTime()),
+                                        document.getId()));
                             }
                             RecyclerView recyclerView = findViewById(R.id.recycleView);
                             recyclerView.setHasFixedSize(true);
@@ -87,6 +108,18 @@ public class Question_board extends AppCompatActivity {
 
 
     }
+
+    OnPostListener onPostListener = new OnPostListener() {
+        @Override
+        public void onDelete() {
+            Log.e("로그", "삭제");
+        }
+
+        @Override
+        public void onModify() {
+            Log.e("로그","수정");
+        }
+    };
 
     View.OnClickListener onClickListener = (v) -> {
         switch(v.getId()){
