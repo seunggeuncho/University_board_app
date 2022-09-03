@@ -5,5 +5,5 @@
 
 
 
-https://user-images.githubusercontent.com/87847677/167119066-1d51bc89-bbf6-4d95-9bb6-0a28a2c0120e.PNG">
-
+<img width="160" alt="로그인화면" src="https://user-images.githubusercontent.com/87847677/188284351-a63a5ee1-3b36-4fd2-91f7-106bb2a0104e.PNG">
+![구글 로그인](https://user-images.githubusercontent.com/87847677/188284359-79fddf90-3c1b-48c2-8a95-d49aea7313eb.PNG)
