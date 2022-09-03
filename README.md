@@ -6,4 +6,4 @@
 
 
 https://user-images.githubusercontent.com/87847677/167119066-1d51bc89-bbf6-4d95-9bb6-0a28a2c0120e.PNG">
-<img width="163" alt="게시판화면" src="https://user-images.githubusercontent.com/87847677/188284312-0a780b4d-4e55-4ff1-974a-410deebe3f5b.PNG">
+
